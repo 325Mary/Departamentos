@@ -1,0 +1,32 @@
+<div class="container text-center mx-auto">
+  <h1><b>Departamentos</b></h1>
+  <br>
+
+  <select [(ngModel)]="nombreDepartamento" (change)="filterDepartamentos()">
+    <option value="" disabled selected>Selecciona un departamento</option>
+    <option *ngFor="let uniqueName of getlistaDepartamentos()">{{ uniqueName }}</option>
+  </select>
+
+  <div class="d-flex flex-fill">
+    <table class="table mx-auto" *ngIf="filteredDepartamentos">
+      <thead>
+        <tr>
+          <th>Region</th>
+          <th>Codigo Departamento</th>
+          <th>Departamento</th>
+          <th>C DANE del municipio</th>
+          <th>Municipio</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let departamento of filteredDepartamentos">
+          <td>{{ departamento.region }}</td>
+          <td>{{ departamento.c_digo_dane_del_departamento }}</td>
+          <td>{{ departamento.departamento }}</td>
+          <td>{{ departamento.c_digo_dane_del_municipio }}</td>
+          <td>{{ departamento.municipio }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
